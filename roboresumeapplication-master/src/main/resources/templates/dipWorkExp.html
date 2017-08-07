@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of Users</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<table style="width:100%">
+    <caption><h1>Display All User Information With there Expirence</h1></caption>
+
+    <tr>
+        <th>User Id</th>
+        <th>User Full Name</th>
+        <th>User Email Address</th>
+        <th>Organization Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Work Experience</th>
+    </tr>
+    <tr th:each="userlist : ${searchUser}">
+        <td th:text="${userlist.id}" ></td>
+        <td th:text="${userlist.fullName}"></td>
+        <td th:text="${userlist.eMailAdd}" ></td>
+        <td th:text="${userlist.orgName}"></td>
+        <td th:text="${userlist.startDate}"></td>
+        <td th:text="${userlist.endDate}"></td>
+        <td th:text="${userlist.workExp}"></td>
+
+    </tr>
+</table>
+<p><a href="homePage">Home Page</a></p>
+
+</body>
+</html>

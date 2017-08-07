@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Add New User Information</title>
+
+    </head>
+    <body>
+    <!-- Form is used to help the user to insert there information and also has validation that tell the user the value they entered is correct or not -->
+        <h1>User Registration Form</h1>
+        <form action="#" th:action="@{/addUser}" th:object="${newUser}" method="post">
+            <p>Enter User Id:<input type="text" th:field="*{id}" />
+                <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</span>
+            </p>
+            <p>Enter User Full Name:<input type="text" th:field="*{fullName}" />
+                <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Full Name Error</span>
+            </p>
+            <p>Enter Email Address:<input type="text" th:field="*{eMailAdd}" />
+                <span th:if="${#fields.hasErrors('eMailAdd')}" th:errors="*{eMailAdd}">Email Address Error</span>
+            </p>
+            <p>Enter Organization Name:<input type="text" th:field="*{orgName}" />
+                <span th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}">Organization Name Error</span>
+            </p>
+            <p>Enter Start Date:<input type="text" th:field="*{startDate}"  />
+                <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Start Date Error</span>
+            </p>
+            <p>Enter End Date:<input type="text" th:field="*{endDate}" />
+                <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">End Date Error</span>
+            </p>
+            <p>
+                <input type="submit" value="Save New User" />
+                <input type="reset" value="Reset User Info." />
+            </p>
+        </form>
+    </body>
+</html>

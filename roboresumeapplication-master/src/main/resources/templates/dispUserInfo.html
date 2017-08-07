@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Added User</title>
+    </head>
+    <body>
+        <h1>Registered User Information Are:</h1>
+
+        <p th:text="'Id:'+${newUser.id}" />
+        <p th:text="'Full Name:'+${newUser.fullName}" />
+        <p th:text="'E-mail Address:'+${newUser.eMailAdd}" />
+        <p th:text="'Organization Name:'+${newUser.orgName}" />
+        <p th:text="'Start Date:'+${newUser.startDate}" />
+        <p th:text="'End Date:'+${newUser.endDate}" />
+
+        <p><a href="addUser">Add More User Info.</a></p>
+        <p><a href="homePage">Home Page</a></p>
+
+    </body>
+</html>
