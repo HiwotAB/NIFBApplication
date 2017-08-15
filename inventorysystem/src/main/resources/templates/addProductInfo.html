@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add User Resume Info</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link href="css/forms.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/addProductInfo}" th:object="${newProd}" method="post">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Enter Product Information</legend>
+
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('prodCode')}" th:errors="*{prodCode}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Product Code</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input  th:field="*{prodCode}" name="prodCode" placeholder="Enter Product Code" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('prodName')}" th:errors="*{prodName}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Product Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input  th:field="*{prodName}" name="prodName" placeholder="Enter Product Name" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('prodDescription')}" th:errors="*{prodDescription}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Product Description</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input  th:field="*{prodDescription}" name="prodDescription" placeholder="Enter Prodcut Description" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="well alert alert-danger" role="alert">You Must enter a valid E-mail!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Quantity</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                    <input  th:field="*{quantity}" name="quantity" placeholder="Enter Quantity" class="form-control"  type= "number">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="well alert alert-danger" role="alert">You Must enter a valid Phone!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Price</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                    <input  th:field="*{price}" name="price" placeholder="Enter price" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
+                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>
