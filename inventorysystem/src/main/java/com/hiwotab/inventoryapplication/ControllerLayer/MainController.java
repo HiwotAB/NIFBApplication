@@ -32,6 +32,13 @@ public class MainController
         return "index";
     }
 
+    @GetMapping("/message")
+    public String errorMsg(Model model)
+    {
+        String message="Product Quantity!!!";
+        model.addAttribute("myMessage", message);
+        return "message";
+    }
     @GetMapping("/addProductInfo")
     public String addProductInfos(Model model)
     {
@@ -56,8 +63,6 @@ public class MainController
     @PostMapping("/reviewTransInfo")
     public String searchChefMethod( @ModelAttribute("searchCode")Transaction transaction,Model model, BindingResult bindingResult) {
         //Product product = productRepository.findOne(transaction.getProdCode());
-
-
         if(bindingResult.hasErrors()) {
             return "reviewTransInfo";
         }
@@ -70,6 +75,12 @@ public class MainController
             return "reviewTransInfo";
         }
 
+        if(transaction.getQuantity()>product.getQuantity()) {
+            String reply = "We don't have " + transaction.getQuantity() + " in stock. We do have " + product.getQuantity() + " in stock";
+            model.addAttribute("showMsg", true);
+            model.addAttribute("noStockMsg", reply);
+            return "reviewTransInfo";
+        }
         transaction.setProdCode(product.getProdCode());
         transaction.setProdName(product.getProdName());
         //transaction.setQuantity(product.getQuantity());

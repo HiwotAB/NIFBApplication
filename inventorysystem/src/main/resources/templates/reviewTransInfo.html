@@ -55,6 +55,8 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                     <input  th:field="*{prodCode}" name="prodCode" placeholder="Enter Product Code" class="form-control"  type="text">
+                                                    <p class="help-block text-danger" th:if="${#fields.hasErrors('prodCode')}" th:errors="*{prodCode}"></p>
+                                                    <p class="help-block text-danger" th:if="${showNoPrdctMsg}"  th:text="${nocode}"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,6 +68,8 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                     <input  th:field="*{quantity}" name="quantity" placeholder="Enter Product quantity" class="form-control"  type="number">
+                                                    <p class="help-block text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+                                                    <p class="help-block text-danger" th:if="${showMsg}"  th:text="${noStockMsg}"></p>
                                                 </div>
                                             </div>
                                         </div>

@@ -53,7 +53,6 @@
                                                     <tr>
                                                         <th>Product Code</th>
                                                         <th>Product Name</th>
-                                                        <th>Product Description</th>
                                                         <th>Product Quantity</th>
                                                         <th>Product Price</th>
                                                         <th>Product Total Tax</th>
@@ -65,7 +64,6 @@
                                                     <tr th:each="transLists : ${searchTrans}">
                                                         <td th:text="${transLists.prodCode}"></td>
                                                         <td th:text="${transLists.prodName}" ></td>
-                                                        <td th:text="${transLists.prodDescription}"></td>
                                                         <td th:text="${transLists.quantity}"></td>
                                                         <td th:text="${transLists.price}"></td>
                                                         <td th:text="${transLists.taxTotal}"></td>
