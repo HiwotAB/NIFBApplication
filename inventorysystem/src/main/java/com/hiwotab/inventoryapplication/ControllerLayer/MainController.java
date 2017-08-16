@@ -82,12 +82,32 @@ public class MainController
 
         return "dispReciept";
     }
-    @GetMapping("/dispAllProdInfo")
-    public String listAllProdInfo(Model model) {
-        Iterable<Product> products=productRepository.findAll();
-        model.addAttribute("searchProd", products);
-        return "dispAllProdInfo";
-    }
+    @GetMapping("/dispAllProduct")
+    public String dispAllProdInfo(Model model) {
+        Iterable<Product> prodList= productRepository.findAll();
+        model.addAttribute("prodList", prodList);
 
+        return "dispAllProduct";
+
+    }
+    @GetMapping("/dispAllTransaction")
+    public String dispAllTransInfo(Model model) {
+        Iterable<Transaction> transactionList= transactionRepository.findAll();
+        model.addAttribute("searchTrans", transactionList);
+
+        return "dispAllTransaction";
+
+    }
+    @GetMapping("/dispProdQaulity")
+    public String dispProdQaulityInfo(Model model) {
+
+        Iterable<Product> prodPos = productRepository.findAllByQuantityGreaterThan(0);
+        model.addAttribute("prodPos", prodPos);
+
+        Iterable<Product> prodNeg = productRepository.findAllByQuantityLessThan(0);
+        model.addAttribute("prodNeg", prodNeg);
+
+        return "dispProdQaulity";
+    }
 
 }

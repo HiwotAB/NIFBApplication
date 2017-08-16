@@ -6,5 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProductRepository extends CrudRepository<Product,Long> {
     Iterable<Product>findAllByProdCode(String prodCode);
+    Iterable<Product> findAllByQuantityGreaterThan(int partialInt);
+    Iterable<Product> findAllByQuantityLessThan(int partialInt);
 
 }
