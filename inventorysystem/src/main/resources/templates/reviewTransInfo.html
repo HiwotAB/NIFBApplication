@@ -40,13 +40,13 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <div class="container">
-                                <form class="well form-horizontal" th:action="@{/searchProdCode}" th:object="${searchCode}" method="post">
+                                <form class="well form-horizontal" th:action="@{/reviewTransInfo}" th:object="${searchCode}" method="post">
 
                                     <fieldset>
 
                                         <!-- Form Name -->
-                                        <legend align="Center">Enter Product Code Information</legend>
-
+                                        <legend align="Center">Enter Product Information</legend>
+                                        <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('prodCode')}" th:errors="*{prodCode}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
                                         <div class="form-group">
@@ -74,8 +74,8 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <button type="submit" class="btn btn-success" >Search<span class="glyphicon glyphicon-save"></span></button>
-                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                                <button type="submit" class="btn btn-success" >Print Receipt<span class="glyphicon glyphicon-save"></span></button>
+
                                             </div>
                                         </div>
 

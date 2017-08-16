@@ -38,17 +38,17 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <div class="container">
-                                <form class="well form-horizontal" th:action="@{/dispAllProduct}" th:object="${prodList}" method="">
+                                <form class="well form-horizontal" th:action="@{/dispAllProduct}" th:object="${searchTrans}" method="">
 
                                     <fieldset>
 
                                         <!-- Form Name -->
-                                        <legend align="Center">Product Information:</legend>
+                                        <legend align="Center">Transaction Information:</legend>
 
                                         <div class="container">
                                             <div class="bs-callout bs-callout-success">
                                                 <table class="table table-striped">
-                                                    <caption> <h4><b>Product Information</b></h4></caption>
+                                                    <caption> <h4><b>Transaction Information</b></h4></caption>
                                                     <thead>
                                                     <tr>
                                                         <th>Product Code</th>
@@ -56,16 +56,23 @@
                                                         <th>Product Description</th>
                                                         <th>Product Quantity</th>
                                                         <th>Product Price</th>
+                                                        <th>Product Total Tax</th>
+                                                        <th>Product Total Price</th>
 
                                                     </tr>
                                                     </thead>
                                                     <tbody align="left">
-                                                    <tr th:each="prodLists : ${prodList}">
-                                                        <td th:text="${prodLists.prodCode}"></td>
-                                                        <td th:text="${prodLists.prodName}" ></td>
-                                                        <td th:text="${prodLists.prodDescription}"></td>
-                                                        <td th:text="${prodLists.quantity}"></td>
-                                                        <td th:text="${prodLists.price}"></td>
+                                                    <tr th:each="transLists : ${searchTrans}">
+                                                        <td th:text="${transLists.prodCode}"></td>
+                                                        <td th:text="${transLists.prodName}" ></td>
+                                                        <td th:text="${transLists.prodDescription}"></td>
+                                                        <td th:text="${transLists.quantity}"></td>
+                                                        <td th:text="${transLists.price}"></td>
+                                                        <td th:text="${transLists.taxTotal}"></td>
+                                                        <td th:text="${transLists.totalPrice}"></td>
+
+
+
 
                                                     </tr>
                                                     </tbody>
@@ -75,8 +82,8 @@
 
                                         <div class="form-group">
                                             <div class="col-md-4">
-                                                <p><a href="addProductInfo"><strong>Enter More Product Information</strong></a></p>
-                                                <p><a href="searchProdCode"><strong>See Transaction</strong></a></p>
+                                                <p><a href="reviewTransInfo"><strong>View Transaction Info</strong></a></p>
+
                                             </div>
                                         </div>
 

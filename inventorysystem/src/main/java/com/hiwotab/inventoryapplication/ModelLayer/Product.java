@@ -13,7 +13,7 @@ public class Product
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+    private long id;
     @NotNull
     private String prodCode;
     @NotNull
@@ -38,11 +38,11 @@ public class Product
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getProdCode() {

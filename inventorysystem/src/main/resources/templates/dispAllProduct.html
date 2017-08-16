@@ -38,17 +38,17 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <div class="container">
-                                <form class="well form-horizontal" th:action="@{/dispAllProduct}" th:object="${searchTrans}" method="">
+                                <form class="well form-horizontal" th:action="@{/dispAllProduct}" th:object="${prodLists}" method="">
 
                                     <fieldset>
 
                                         <!-- Form Name -->
-                                        <legend align="Center">Transaction Information:</legend>
+                                        <legend align="Center">Product Information:</legend>
 
                                         <div class="container">
                                             <div class="bs-callout bs-callout-success">
                                                 <table class="table table-striped">
-                                                    <caption> <h4><b>Transaction Information</b></h4></caption>
+                                                    <caption> <h4><b>Product Information</b></h4></caption>
                                                     <thead>
                                                     <tr>
                                                         <th>Product Code</th>
@@ -56,22 +56,21 @@
                                                         <th>Product Description</th>
                                                         <th>Product Quantity</th>
                                                         <th>Product Price</th>
-                                                        <th>Product Total Tax</th>
-                                                        <th>Product Total Price</th>
+                                                        <th>Actions</th>
 
                                                     </tr>
                                                     </thead>
                                                     <tbody align="left">
-                                                    <tr th:each="transLists : ${searchTrans}">
-                                                        <td th:text="${transLists.prodCode}"></td>
-                                                        <td th:text="${transLists.prodName}" ></td>
-                                                        <td th:text="${transLists.prodDescription}"></td>
-                                                        <td th:text="${transLists.quantity}"></td>
-                                                        <td th:text="${transLists.price}"></td>
-                                                        <td th:text="${transLists.taxTotal}"></td>
-                                                        <td th:text="${transLists.totalPrice}"></td>
-
-
+                                                    <tr th:each="prodLis : ${prodLists}">
+                                                        <td th:text="${prodLis.prodCode}"></td>
+                                                        <td th:text="${prodLis.prodName}" ></td>
+                                                        <td th:text="${prodLis.prodDescription}"></td>
+                                                        <td th:text="${prodLis.quantity}"></td>
+                                                        <td th:text="${prodLis.price}"></td>
+                                                        <td>
+                                                            <a th:href="@{/update/{id}(id=${prodLis.id})}">Update</a>
+                                                            <a th:href="@{/delete/{id}(id=${prodLis.id})}">Delete</a>
+                                                        </td>
 
                                                     </tr>
                                                     </tbody>
@@ -82,7 +81,7 @@
                                         <div class="form-group">
                                             <div class="col-md-4">
                                                 <p><a href="addProductInfo"><strong>Enter More Product Information</strong></a></p>
-
+                                                <p><a href="index"><strong>Back to Home Page</strong></a></p>
                                             </div>
                                         </div>
 

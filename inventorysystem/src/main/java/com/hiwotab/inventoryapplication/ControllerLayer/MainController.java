@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -50,18 +48,18 @@ public class MainController
         return "dispProdcutInfo";
     }
 
-    @GetMapping("/searchProdCode")
+    @GetMapping("/reviewTransInfo")
     public String searchChefMethod(Model model){
         model.addAttribute("searchCode",new Transaction());
-        return "searchProdCode";
+        return "reviewTransInfo";
     }
-    @PostMapping("/searchProdCode")
+    @PostMapping("/reviewTransInfo")
     public String searchChefMethod( @ModelAttribute("searchCode")Transaction transaction,Model model, BindingResult bindingResult) {
         //Product product = productRepository.findOne(transaction.getProdCode());
 
 
         if(bindingResult.hasErrors()) {
-            return "searchProdCode";
+            return "reviewTransInfo";
         }
         Iterable<Product>productlist=productRepository.findAllByProdCode(transaction.getProdCode());
         Product product=productlist.iterator().next();
@@ -69,11 +67,13 @@ public class MainController
             String message = "Sorry!! Product with this Code not found Please try another";
             model.addAttribute("showNoPrdctMsg", true);
             model.addAttribute("nocode", message);
-            return "searchProdCode";
+            return "reviewTransInfo";
         }
+
         transaction.setProdCode(product.getProdCode());
         transaction.setProdName(product.getProdName());
-        transaction.setQuantity(product.getQuantity());
+        //transaction.setQuantity(product.getQuantity());
+        transaction.getQuantity();
         transaction.setPrice(product.getPrice());
         double tax = 0.06;
         transaction.setTaxTotal(product.getPrice() * tax * transaction.getQuantity());
@@ -85,7 +85,7 @@ public class MainController
     @GetMapping("/dispAllProduct")
     public String dispAllProdInfo(Model model) {
         Iterable<Product> prodList= productRepository.findAll();
-        model.addAttribute("prodList", prodList);
+        model.addAttribute("prodLists", prodList);
 
         return "dispAllProduct";
 
@@ -109,5 +109,19 @@ public class MainController
 
         return "dispProdQaulity";
     }
-
+    @RequestMapping("/update/{id}")
+    public String updateProductInfo(@PathVariable("id") long id, Model model)    {
+        model.addAttribute("newProd", productRepository.findOne(id));
+        return "addProductInfo";
+    }
+    @RequestMapping("/delete/{id}")
+    public String delProdInfo(@PathVariable("id") long id){
+        productRepository.delete(id);
+        return "redirect:/dispAllProduct";
+    }
+    /*@RequestMapping("/update/{id}")
+    public String updateTransactionInfo(@PathVariable("id") long id, Model model)    {
+        model.addAttribute("searchCode", transactionRepository.findOne(id));
+        return "reviewTransInfo";
+    }*/
 }
