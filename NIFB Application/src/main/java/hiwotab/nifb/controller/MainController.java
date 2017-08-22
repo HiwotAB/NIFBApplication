@@ -35,24 +35,18 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             return "fbForm";
         }
-
         fbPlayRepostory.save(fbPlay);
         ArrayList<String> fBResults = fbPlay.runFizzBuzz();
-
         for(String item:fBResults)
         {
             System.out.println(item);
         }
-
         model.addAttribute("fBR",fBResults);
-
         return "confirmfbForm";
     }
 
-    // TO show the list of Tv Show which has been registered
     @GetMapping("/displayFBPlay")
     public String disFBPlayForm(Model model) {
-
         model.addAttribute("searchPay",fbPlayRepostory.findAll());
         return "displayFBPlay";
 

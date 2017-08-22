@@ -16,7 +16,7 @@ public class FBPlay {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NotNull
-    @Size(min = 1, max = 4)
+
     @Min(10)
     @Max(1000)
     private int fbNumber;
@@ -46,9 +46,6 @@ public class FBPlay {
     public void setName(String name) {
         this.name = name;
     }
-// here i need array list of these values then callthis to controller and then on confirm use the th iterator and display it
-
-
     public ArrayList<String> runFizzBuzz()
     {
         ArrayList fBO = new ArrayList();

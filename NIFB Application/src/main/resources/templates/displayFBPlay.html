@@ -76,33 +76,25 @@
                     <div class="header-content-inner">
                         <h1>Welcome To Fizz Buzz!</h1>
                         <div class="container">
-                            <form class="well form-horizontal" th:action="@{/displayFBPlay}" method="post" th:object="${searchPay}">
-                                <fieldset>
-
-                                    <!-- Form Name -->
-                                    <legend align="Center">Enter Number!</legend>
-
-                                    <!-- Text input-->
-                                    <div  th:if="${#fields.hasErrors('fbNumber')}" th:text="#{static.exceptiontrapper}" class="well alert alert-danger" role="alert">You Must enter a valid Number!</div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Number</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-check"></i></span>
-                                                <input  th:field="*{fbNumber}" name="fbNumber" placeholder="Enter Number" class="form-control"  type="number">
+                            <section id="hero">
+                                <div class="hero-container">
+                                    <div class="wow fadeIn">
+                                        <h1>Welcome to FizzBuzz</h1>
+                                        <h2>You can play this <span class="rotating">wonderful game, easy and fun game, without hassle!</span></h2>
+                                        <div class="actions">
+                                            <div class="col-md-6 col-md-offset-3">
+                                                <table class="table table-striped">
+                                                    <tr th:each="item :${searchPay}">
+                                                        <td th:text="${item.name}">Name</td>
+                                                        <td th:text="${item.fbNumber}">Selected Number</td>
+                                                    </tr>
+                                                </table>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <!-- Button -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Play</label>
-                                        <div class="col-md-4">
-                                            <button type="submit" class="btn btn-warning" >Play<span class="glyphicon glyphicon-play"></span></button>
-                                        </div>
-                                    </div>
 
-                                </fieldset>
-                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
 
                     </div>

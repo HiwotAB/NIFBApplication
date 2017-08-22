@@ -78,14 +78,12 @@
                             <div class="wow fadeIn">
                                 <h1>Welcome to FizzBuzz</h1>
                                 <h2>You can play this <span class="rotating">wonderful game, easy and fun game, without hassle!</span></h2>
+                                <a href="/" class="btn-services">Play again!</a>
                                 <div class="actions">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <table class="table table-striped">
-                                            <tr th:each="item :${confirmfbForm}">
-                                                <td th:text="${item.userName}">Name</td>
-                                                <td th:text="${item.number}">Selected Number</td>
-                                            </tr>
-                                        </table>
+                                        <div th:each="item :${fBR}">
+                                            <p th:text="${item}"></p>
+                                        </div>
                                     </div>
 
                                 </div>
