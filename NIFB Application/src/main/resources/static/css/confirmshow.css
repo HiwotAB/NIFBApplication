@@ -1,0 +1,16 @@
+
+body{
+    color:black;
+
+    text-align: center;
+
+    color: #f8f8f8;
+
+    background: url(../img/downloadC.jpg) repeat-x;
+
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-size: cover;
+}
+.text{
+    color:black;
+}
